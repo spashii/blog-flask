@@ -1,0 +1,8 @@
+blog_flask/site.db
+blog_flask/static/profile_pics/*.jpg
+!default.jpg
+blog_flask/static/profile_pics/*.png
+**/__pycache__
+venv_blog_flask/
+.env
+

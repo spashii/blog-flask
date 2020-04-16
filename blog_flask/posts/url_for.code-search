@@ -1,0 +1,68 @@
+# Query: url_for
+# Including: ./blog_flask
+# ContextLines: 2
+
+45 results - 9 files
+
+blog_flask/posts/routes.py:
+   1: from flask import (Blueprint, render_template, redirect, url_for,
+  19:         return redirect(url_for('main.home'))
+  40:         return redirect(url_for('posts.post', post_id=post.id))
+  57:     return redirect(url_for('main.home'))
+
+blog_flask/templates/home.html:
+   5:             <img class="rounded-circle article-img" src="{{ url_for('static', filename=('profile_pics/' + post.author.image_file)) }}">
+   8:                     <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+  11:                 <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+  19:                 <a class="btn btn-info mb-4"href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+  21:                 <a class="btn btn-outline-info mb-4" href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
+
+blog_flask/templates/layout.html:
+  12:     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+  24:                 <a class="navbar-brand mr-4" href="{{ url_for('main.home') }}">Blog</a>
+  31:                         <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
+  32:                         <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
+  37:                             <a class="nav-item nav-link" href="{{ url_for('posts.post_new') }}">New Post</a>
+  38:                             <a class="nav-item nav-link" href="{{ url_for('users.account') }}">Account</a>
+  39:                             <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Logout</a>
+  41:                             <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Login</a>
+  42:                             <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Register</a>
+
+blog_flask/templates/login.html:
+  44:                 <a href="{{ url_for('users.reset_request') }}">Forgot Password?</a>
+  52:         Need An Account? <a class="ml-2" href="{{ url_for('users.register') }}">Sign up Now</a>
+
+blog_flask/templates/post.html:
+   5:             src="{{ url_for('static', filename=('profile_pics/' + post.author.image_file)) }}">
+   8:                 <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+  12:                         <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.post_update', post_id=post.id)}}">Update</a>
+  38:                     <form action="{{ url_for('posts.post_delete', post_id=post.id) }}" method="POST">
+
+blog_flask/templates/register.html:
+  72:             Already Have An Account? <a class="ml-2" href="{{ url_for('users.login') }}">Sign in</a>
+
+blog_flask/templates/user_posts.html:
+   7:         src="{{ url_for('static', filename=('profile_pics/' + post.author.image_file)) }}">
+  10:             <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+  13:         <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+  21: <a class="btn btn-info mb-4" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+  23: <a class="btn btn-outline-info mb-4" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+
+blog_flask/users/routes.py:
+    1: from flask import render_template, url_for, flash, redirect, request, Blueprint
+   14:         return redirect(url_for('main.home'))
+   22:         return redirect(url_for('main.home'))
+   28:         return redirect(url_for('main.home'))
+   39:                 return redirect(url_for('main.home'))
+   48:     return redirect(url_for('main.home'))
+   62:         return redirect(url_for('users.account'))
+   66:     image_file = url_for('static', filename=(f'profile_pics/{current_user.image_file}'))
+   79:         return redirect(url_for('main.home'))
+   85:         return redirect(url_for('users.login'))
+   91:         return redirect(url_for('main.home'))
+   95:         return redirect(url_for('users.reset_request'))
+  102:         return redirect(url_for('main.home'))
+
+blog_flask/users/utils.py:
+   4: from flask import url_for
+  25: {url_for('users.reset_token', token=token, _external=True)}
