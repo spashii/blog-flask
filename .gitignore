@@ -4,5 +4,6 @@ blog_flask/static/profile_pics/*.jpg
 blog_flask/static/profile_pics/*.png
 **/__pycache__
 venv_blog_flask/
+/.backups
 .env
 
