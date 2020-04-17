@@ -1,9 +1,21 @@
+# sqlite db file
 blog_flask/site.db
+
+# ignore all profile pictures except default.jpg
 blog_flask/static/profile_pics/*.jpg
 !default.jpg
 blog_flask/static/profile_pics/*.png
-**/__pycache__
-venv_blog_flask/
-/.backups
+
+# ignore environment variable setter
 .env
+
+# virtual environment files
+venv
+
+# cache files and other stuff
+**/__pycache__
+**/*.pyc
+.backups
+.vscode
+
 
